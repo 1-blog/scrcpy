@@ -1,33 +1,94 @@
-<h2>Scrcpy Options<br></h2><hr><table style="border-collapse: collapse; width: 1380px; height: 711px;"><tbody>
-<tr>
-	<td style="width: 14.9854%; background-color: rgb(255, 255, 255);">-b, --video-bit-rate=value<br></td>
-	<td style="width: 85.0146%; background-color: rgb(255, 255, 255);">Encode the video at the given bit rate, expressed in bits/s. Unit suffixes are supported: 'K' (x1000) and 'M' (x1000000). &nbsp; &nbsp; &nbsp; &nbsp; Default is 8M (8000000).<br></td></tr>
-<tr>
-	<td style="background-color: rgb(255, 255, 255);">-m, --max-size=value <br></td>
-	<td style="background-color: rgb(255, 255, 255);">Limit both the width and height of the video to value. The other dimension is computed so that the device aspect-ratio is preserved. &nbsp; &nbsp; &nbsp; &nbsp; Default is 0 (unlimited).<br></td></tr>
-<tr>
-	<td style="background-color: rgb(255, 255, 255);">--max-fps=value<br></td>
-	<td style="background-color: rgb(255, 255, 255);">Limit the frame rate of screen capture (officially supported since Android 10, but may work on earlier versions).<br></td></tr>
-<tr>
-	<td style="background-color: rgb(255, 255, 255);">--no-audio<br></td>
-	<td style="background-color: rgb(255, 255, 255);">Disable audio forwarding. &nbsp; &nbsp; --no-mouse-hover &nbsp; &nbsp; &nbsp; &nbsp; Do not forward mouse hover (mouse motion without any clicks) events.<br></td></tr>
-<tr>
-	<td style="background-color: rgb(255, 255, 255);">--no-power-on<br></td>
-	<td style="background-color: rgb(255, 255, 255);">Do not power on the device on start. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br></td></tr><tr>
-	<td style="background-color: rgb(255, 255, 255);">--power-off-on-close<br></td>
-	<td style="background-color: rgb(255, 255, 255);">Turn the device screen off when closing scrcpy.<br></td></tr>
-<tr>
-	<td style="background-color: rgb(255, 255, 255);">-r, --record=file.mp4<br></td>
-	<td style="background-color: rgb(255, 255, 255);">Record screen to file.<br></td></tr>
-<tr>
-	<td style="background-color: rgb(255, 255, 255);">-S, --turn-screen-off<br></td>
-	<td style="background-color: rgb(255, 255, 255);">Turn the device screen off immediately.<br></td></tr>
-<tr>
-	<td style="background-color: rgb(255, 255, 255);">-t, --show-touches<br></td>
-	<td style="background-color: rgb(255, 255, 255);"> Enable "show touches" on start, restore the initial value on exit. &nbsp; &nbsp; &nbsp; &nbsp; It only shows physical touches (not clicks from scrcpy). <br></td></tr>
-<tr>
-	<td style="background-color: rgb(255, 255, 255);">--video-codec=name<br></td>
-	<td style="background-color: rgb(255, 255, 255);">Select a video codec (h264, h265 or av1). &nbsp; &nbsp; &nbsp; &nbsp; Default is h264.<br></td></tr>
-<tr>
-	<td style="background-color: rgb(255, 255, 255);">--video-source=source<br></td>
-	<td style="background-color: rgb(255, 255, 255);">Select the video source (display or camera). &nbsp; &nbsp; &nbsp; &nbsp; Camera mirroring requires Android 12+. &nbsp; &nbsp; &nbsp; &nbsp; Default is display.<br></td></tr><tr><td style="background-color: rgb(255, 255, 255);">-w, --stay-awake<br></td><td style="background-color: rgb(255, 255, 255);">Keep the device on while scrcpy is running, when the device is plugged in.<br></td></tr><tr><td style="background-color: rgb(255, 255, 255);">--window-borderless<br></td><td style="background-color: rgb(255, 255, 255);">Disable window decorations (display borderless window).<br></td></tr></tbody></table><hr><p><br></p><p><br></p><p><br></p>
+<h2>Scrcpy Options<br></h2><hr><table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Description</th>
+      <th>Default / Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>-b, --video-bit-rate</code></td>
+      <td>Sets video encoding bitrate (bits/sec). Supports K (×1000) and M (×1,000,000).</td>
+      <td>Default: 8M (8,000,000)</td>
+    </tr>
+
+    <tr>
+      <td><code>-m, --max-size</code></td>
+      <td>Limits width/height of video while preserving aspect ratio.</td>
+      <td>Default: 0 (no limit)</td>
+    </tr>
+
+    <tr>
+      <td><code>--max-fps</code></td>
+      <td>Caps frame rate of screen capture.</td>
+      <td>Default: uncapped / device dependent</td>
+    </tr>
+
+    <tr>
+      <td><code>--no-audio</code></td>
+      <td>Disables audio forwarding.</td>
+      <td>Audio enabled by default (if supported)</td>
+    </tr>
+
+    <tr>
+      <td><code>--no-mouse-hover</code></td>
+      <td>Prevents forwarding mouse hover (movement without clicks).</td>
+      <td>Hover events are forwarded by default</td>
+    </tr>
+
+    <tr>
+      <td><code>--no-power-on</code></td>
+      <td>Does not wake/power on device when scrcpy starts.</td>
+      <td>Device is powered on by default</td>
+    </tr>
+
+    <tr>
+      <td><code>--power-off-on-close</code></td>
+      <td>Turns off device screen when scrcpy exits.</td>
+      <td>Disabled by default</td>
+    </tr>
+
+    <tr>
+      <td><code>-r, --record</code></td>
+      <td>Records screen output to a file (format inferred from extension or option).</td>
+      <td>No recording by default</td>
+    </tr>
+
+    <tr>
+      <td><code>-S, --turn-screen-off</code></td>
+      <td>Turns device screen off immediately while mirroring continues.</td>
+      <td>Screen stays on by default</td>
+    </tr>
+
+    <tr>
+      <td><code>-t, --show-touches</code></td>
+      <td>Shows touch indicators on device during use.</td>
+      <td>Disabled by default</td>
+    </tr>
+
+    <tr>
+      <td><code>--video-codec</code></td>
+      <td>Selects video codec (h264, h265, av1).</td>
+      <td>Default: h264</td>
+    </tr>
+
+    <tr>
+      <td><code>--video-source</code></td>
+      <td>Selects video source (display or camera).</td>
+      <td>Default: display</td>
+    </tr>
+
+    <tr>
+      <td><code>-w, --stay-awake</code></td>
+      <td>Keeps device awake while plugged in during scrcpy session.</td>
+      <td>Disabled by default</td>
+    </tr>
+
+    <tr>
+      <td><code>--window-borderless</code></td>
+      <td>Removes window borders for a clean display window.</td>
+      <td>Standard window borders enabled</td>
+    </tr>
+  </tbody>
+</table>
